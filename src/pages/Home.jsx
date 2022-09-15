@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Card from "../components/Card";
+import Card from "../components/Card/Card";
 import dummyData from "../dummyData.json"; // To be replaced with your api response data
 import { API_ENDPOINT } from "../api/api";
 
@@ -42,12 +42,16 @@ export const Home = () => {
           columnGap: "20px",
         }}
       >
-        {/* <Card
-          image={data.image}
-          name={data.name}
-          home_port={data.season}
-          roles={data.roles}
-        /> */}
+        {data.map((item) => (
+          <Card
+            image={item.image}
+            name={`${item._embedded.show.name}: Season ${item.season}`}
+            ep={item.name}
+            summary={item._embedded.show.summary}
+            airtime={item.airtime}
+            key={item.id}
+          />
+        ))}
       </div>
     </>
   );
