@@ -1,5 +1,5 @@
 import React from "react";
-// import "./Card.scss";
+import "./Card.scss";
 import unavailable from "../../assets/preview-unavailable.png";
 
 const Card = ({ image, name, ep, summary, airtime }) => {
