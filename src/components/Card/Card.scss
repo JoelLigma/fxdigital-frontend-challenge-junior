@@ -9,18 +9,20 @@
   justify-content: space-between;
   padding-bottom: 2rem;
   color: #333;
-  border-radius: 3rem;
+  border-radius: 1rem;
   font-size: 1.6rem;
   line-height: 2.4rem;
   background-color: $brandSecondary;
   color: $ice;
+  position: relative;
+  overflow: hidden;
 
   &__container {
     display: flex;
     width: 100%;
     max-height: 35rem;
-    border-top-left-radius: 3rem;
-    border-top-right-radius: 3rem;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
 
     @include desktop {
       max-height: 22rem;
@@ -38,10 +40,64 @@
     padding: 0 2rem;
   }
 
+  &__schedule {
+    font-size: 1.6rem;
+    padding: 0 2rem;
+    align-self: flex-start;
+  }
+
   &__img {
     width: 100%;
     height: auto;
-    border-top-left-radius: 3rem;
-    border-top-right-radius: 3rem;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+  }
+
+  &__title-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 1.5rem;
+    background-color: black;
+    background-color: $brandSecondary;
+    width: 100%;
+    padding: 1rem;
+  }
+
+  &__top-layer {
+    position: absolute;
+    background-color: $brandPrimary;
+    width: 5rem;
+    height: 30rem;
+    transform: rotate(45deg);
+    top: -186px;
+    left: 46px;
+  }
+
+  &__bottom-layer {
+    position: absolute;
+    background-color: $brandPrimary;
+    width: 20rem;
+    height: 20rem;
+    transform: rotate(45deg);
+    bottom: -13rem;
+    right: -13rem;
+  }
+
+  &__button-container {
+    position: relative;
+    width: 100%;
+    padding-left: 2rem;
+  }
+
+  &__button-layer {
+    position: absolute;
+    width: 3rem;
+    height: 9rem;
+    background-color: #070532;
+    bottom: -37px;
+    right: 150px;
+    transform: rotate(57deg);
   }
 }
