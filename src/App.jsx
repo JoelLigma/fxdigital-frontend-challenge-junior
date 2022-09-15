@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Header from "./components/Header";
+import Header from "./components/Header/Header";
 import Home from "./pages/Home";
 import "./global.css";
 import "./styles/partials/globals/_resets.scss";
@@ -18,7 +18,7 @@ class App extends Component {
           <main>
             <section>
               <Routes>
-                <Route path={"/"} element={<Home />} />
+                <Route exact path="/" element={<Home />} />
               </Routes>
             </section>
           </main>

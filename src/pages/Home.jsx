@@ -32,7 +32,7 @@ export const Home = () => {
 
   return (
     <>
-      <h1>Space X Ships</h1>
+      {/* <h1>Space X Ships</h1> */}
       <div
         className="App"
         style={{

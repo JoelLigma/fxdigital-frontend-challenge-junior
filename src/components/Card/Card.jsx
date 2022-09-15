@@ -29,7 +29,6 @@ const Card = ({ image, name, ep, summary, airtime }) => {
         <NavLink to="">
           <Button label="Read more" />
         </NavLink>
-
         <div className="card__button-layer"></div>
       </div>
       <div className="card__bottom-layer"></div>
