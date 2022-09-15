@@ -1,0 +1,47 @@
+@use "../globals/variables" as *;
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: proxima-nova, Proxima Nova, -apple-system, BlinkMacSystemFont,
+    Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+  box-sizing: border-box;
+  font-size: 0.625rem;
+  color: $ice;
+}
+
+body {
+  background-color: $brandPrimary;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+li {
+  list-style: none;
+}
+
+:focus,
+:active {
+  outline: none;
+}
+
+a:focus,
+a:active {
+  outline: none;
+}
