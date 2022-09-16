@@ -1,0 +1,62 @@
+@use "../../styles/partials/globals/mixins" as *;
+
+.home {
+  margin-top: 15.5rem;
+
+  @include tablet {
+    margin-top: 21rem;
+  }
+
+  &__title {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 4rem;
+    margin-bottom: 4rem;
+    padding: 0 1.6rem;
+    white-space: pre-wrap;
+
+    @include tablet {
+      padding: 0 3.6rem;
+    }
+
+    @include desktop {
+      padding: 0 calc((100vw - 1208px) / 2);
+    }
+  }
+
+  &__background {
+    @include tablet {
+      background-color: white;
+      position: fixed;
+      top: 100px;
+      left: 79%;
+      width: 125%;
+      height: 1208px;
+      z-index: -1;
+      transform: rotate(119deg);
+    }
+
+    @include desktop {
+      left: 24%;
+    }
+  }
+
+  &__container {
+    margin: 0 1.6rem 1.6rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 1.5rem;
+    column-gap: 2rem;
+
+    @include tablet {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin: 0 3.6rem 3.6rem;
+    }
+
+    @include desktop {
+      margin: 0 calc((100vw - 1208px) / 2) 3.6rem;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+}

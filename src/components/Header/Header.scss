@@ -10,13 +10,14 @@
   top: 0;
   left: 0;
   z-index: 10;
-  height: 10.1rem;
+  height: 6rem;
   width: 100%;
   transition: 0.6s;
   border-bottom: 1px solid transparent;
 
   @include tablet {
     padding: 1.6rem 6rem;
+    height: 10.1rem;
   }
 
   &--scrolled {
@@ -34,15 +35,29 @@
   &__link {
     display: inline-block;
     font-size: 1.6rem;
-    opacity: 0.7;
     font-weight: 600;
+    color: $ice;
 
-    &:hover {
-      opacity: 1;
+    @include tablet {
+      opacity: 0.7;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    @include desktop {
+      color: $brandPrimary;
+    }
+
+    &--red {
+      color: $brandPrimary;
     }
   }
 
   &__img {
+    width: 11rem;
+    height: 2.3rem;
     transition: 0.6s;
     filter: invert(12%) sepia(89%) saturate(6324%) hue-rotate(338deg)
       brightness(90%) contrast(106%);

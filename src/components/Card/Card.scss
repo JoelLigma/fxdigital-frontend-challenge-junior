@@ -14,8 +14,9 @@
   line-height: 2.4rem;
   background-color: $brandSecondary;
   color: $ice;
+  clip-path: polygon(0 0, 0 100%, 83.5% 100%, 100% 90.5%, 100% 0);
+  -webkit-clip-path: polygon(0 0, 0 100%, 83.5% 100%, 100% 90.5%, 100% 0);
   position: relative;
-  overflow: hidden;
 
   &__container {
     display: flex;
@@ -75,29 +76,9 @@
     left: 46px;
   }
 
-  &__bottom-layer {
-    position: absolute;
-    background-color: $brandPrimary;
-    width: 20rem;
-    height: 20rem;
-    transform: rotate(45deg);
-    bottom: -13rem;
-    right: -13rem;
-  }
-
   &__button-container {
     position: relative;
     width: 100%;
     padding-left: 2rem;
-  }
-
-  &__button-layer {
-    position: absolute;
-    width: 3rem;
-    height: 9rem;
-    background-color: #070532;
-    bottom: -37px;
-    right: 150px;
-    transform: rotate(57deg);
   }
 }

@@ -16,6 +16,8 @@
   align-items: center;
   justify-content: center;
   gap: 0.7rem;
+  clip-path: polygon(0 0, 0 100%, 85.5% 100%, 100% 68.5%, 100% 0);
+  -webkit-clip-path: polygon(0 0, 0 100%, 85.5% 100%, 100% 68.5%, 100% 0);
 
   &:hover {
     cursor: pointer;

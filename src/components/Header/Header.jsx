@@ -22,7 +22,10 @@ export const Header = () => {
         />
         <ul className="navbar__list">
           <li className="navbar__list-item">
-            <NavLink to="/" className="navbar__link">
+            <NavLink
+              to="/"
+              className={`navbar__link ${scrolled ? "" : "navbar__link--red"}`}
+            >
               Home
             </NavLink>
           </li>
