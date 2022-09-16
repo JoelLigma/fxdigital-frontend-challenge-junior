@@ -1,26 +1,103 @@
 import React from "react";
+import { useParams } from "react-router-dom";
 import "./Details.scss";
 import unavailable from "../../assets/images/preview-unavailable.png";
+import element from "../../assets/icons/fx-element.svg";
+import Button from "../../components/Button/Button";
 
 const Details = ({ data }) => {
-  console.log("details data", data);
-
-  const findSelectedShow = (data, id) => {
-    return data.find((item) => item.id === id);
+  const findSelectedShow = (data) => {
+    const selectedShowObj = useParams();
+    return data.find((item) => item.id === Number(selectedShowObj.showId));
   };
+
+  const selectedShow = findSelectedShow(data);
+
+  if (selectedShow === undefined) {
+    return (
+      <h1 className="details__error">
+        Sorry, we could not find the selected show.
+      </h1>
+    );
+  }
+
+  // jump to top of page
+  window.scrollTo(0, 0);
 
   return (
     <section className="details">
-      <h1 className="details__title">{`Program Details: ${data._embedded.show.name}`}</h1>
-      <img
-        src={
-          data.image !== null && Object.keys(data.image).includes("original")
-            ? data.image.original
-            : unavailable
-        }
-        alt="No preview picture available"
-        className="card__img"
-      />
+      <p className="details__header">Web TV Streaming</p>
+      <h1 className="details__title">{`Program Details: ${selectedShow._embedded.show.name}`}</h1>{" "}
+      <div className="details__wrapper">
+        <div className="details__container-left">
+          <img className="details__elements" src={element} alt="FX elements" />
+
+          <div className="details__container-img">
+            <img
+              src={
+                selectedShow.image !== null &&
+                Object.keys(selectedShow.image).includes("original")
+                  ? selectedShow.image.original
+                  : unavailable
+              }
+              alt="No preview picture available"
+              className="details__img"
+            />
+          </div>
+        </div>
+        <div className="details__container-right">
+          <p className="details__text details__text--large">{`${selectedShow._embedded.show.name}: Season ${selectedShow.season}, ${selectedShow.name}`}</p>
+          <p className="details__text">{`${
+            selectedShow.summary !== null && selectedShow.summary.length > 0
+              ? selectedShow.summary.replaceAll("<p>", "").replaceAll("</p>")
+              : "N/A"
+          }`}</p>
+          <p className="details__text">
+            <span className="details__text--bold">{"Avg. rating: "}</span>
+            {`${
+              selectedShow._embedded.show.rating.average !== null &&
+              String(selectedShow._embedded.show.rating.average).length > 0
+                ? selectedShow._embedded.show.rating.average
+                : "N/A"
+            }`}
+          </p>
+          <p className="details__text">
+            <span className="details__text--bold">{"Genre(s): "}</span>
+            {`${
+              selectedShow._embedded.show.genres !== null &&
+              selectedShow._embedded.show.genres.length > 0
+                ? selectedShow._embedded.show.genres
+                : "N/A"
+            }`}
+          </p>
+          <p className="details__text">
+            <span className="details__text--bold">{"Runtime: "}</span>
+            {`${
+              selectedShow.runtime !== null && selectedShow.runtime.length > 0
+                ? `${selectedShow.runtime} minutes`
+                : "N/A"
+            }`}
+          </p>
+          <p className="details__text">
+            <span className="details__text--bold">{"Language: "}</span>
+            {`${
+              selectedShow._embedded.show.language !== null &&
+              selectedShow._embedded.show.language.length > 0
+                ? selectedShow._embedded.show.language
+                : "N/A"
+            }`}
+          </p>{" "}
+          <p className="details__text">{`Available on ${selectedShow._embedded.show.webChannel.name}`}</p>
+          <a
+            href={selectedShow._embedded.show.officialSite}
+            target="_blank"
+            rel="noopener"
+            className="details__link"
+          >
+            <Button label="Watch now" type="watch" />
+          </a>
+        </div>
+      </div>
     </section>
   );
 };

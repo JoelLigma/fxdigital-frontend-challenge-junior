@@ -34,12 +34,15 @@
     height: 1.4rem;
     filter: brightness(0%) invert(100%);
     transition: 0.4s;
-    margin-top: 0.4rem;
   }
 
   &__contact {
     width: 20rem;
     background-color: $brandSecondary;
     font-size: 1.8rem;
+  }
+
+  &__watch {
+    margin-top: 3rem;
   }
 }

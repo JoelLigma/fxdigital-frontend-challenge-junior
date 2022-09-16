@@ -60,13 +60,13 @@ const App = () => {
           <section>
             <Routes>
               <Route
-                path="/show-details/:id"
+                path="/show-details/:showId"
                 element={<Details data={data} date={convertDate(date)} />}
               />
               <Route
                 exact
                 path="/"
-                element={<Home data={data} date={date} />}
+                element={<Home data={data} date={convertDate(date)} />}
               />
             </Routes>
           </section>

@@ -2,11 +2,89 @@
 @use "../../styles/partials/globals/mixins" as *;
 
 .details {
-  margin-top: 15.5rem;
+  padding: 15.5rem 2rem 12rem;
   background-color: $brandSecondary;
   color: $ice;
+  font-size: 1.6rem;
+  border-bottom: 1px solid hsla(0, 0%, 59%, 0.5);
 
   @include tablet {
-    margin-top: 21rem;
+    padding: 21rem 3.6rem 14rem;
+  }
+
+  @include desktop {
+    padding: 21rem calc((100vw - 1208px) / 2) 14rem;
+  }
+
+  &__header {
+    opacity: 0.5;
+    margin-bottom: 2.3rem;
+    font-size: 2.1rem;
+    line-height: 2.8rem;
+    font-weight: 500;
+  }
+
+  &__title {
+    font-size: 4rem;
+    margin-bottom: 3rem;
+    max-width: 49rem;
+  }
+
+  &__text {
+    font-size: 1.8rem;
+    line-height: 2.8rem;
+
+    &--large {
+      font-size: 3rem;
+      color: $brandPrimary;
+    }
+
+    &--bold {
+      font-weight: 600;
+      //   opacity: 0.5;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+  }
+
+  &__container-img {
+    clip-path: polygon(0 0, 0 100%, 83.5% 100%, 100% 90.5%, 100% 0);
+    -webkit-clip-path: polygon(0 0, 0 100%, 83.5% 100%, 100% 90.5%, 100% 0);
+    position: relative;
+  }
+
+  &__container-right {
+    width: 100rem;
+    margin-left: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__elements {
+    display: block;
+    z-index: 99;
+    top: 6rem;
+    position: absolute;
+    left: -5.7rem;
+    width: 12.2rem;
+    height: 12.4rem;
+    filter: invert(18%) sepia(69%) saturate(7426%) hue-rotate(340deg)
+      brightness(106%) contrast(113%);
+  }
+
+  &__container-left {
+    position: relative;
+    display: flex;
+    height: 56rem;
+    width: 58rem;
   }
 }

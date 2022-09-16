@@ -1,9 +1,11 @@
 import React from "react";
 import Card from "../../components/Card/Card";
 import "./Home.scss";
-// import dummyData from "../../dummyData.json"; // To be replaced with your api response data
 
 export const Home = ({ data, date }) => {
+  // jump to top of page
+  window.scrollTo(0, 0);
+
   return (
     <div className="home">
       <div className="home__background"></div>

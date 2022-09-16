@@ -9,7 +9,7 @@
   justify-content: space-between;
   padding-bottom: 2rem;
   color: #333;
-  border-radius: 1rem;
+
   font-size: 1.6rem;
   line-height: 2.4rem;
   background-color: $brandSecondary;
@@ -22,8 +22,6 @@
     display: flex;
     width: 100%;
     max-height: 35rem;
-    border-top-left-radius: 1rem;
-    border-top-right-radius: 1rem;
 
     @include desktop {
       max-height: 22rem;
@@ -50,8 +48,6 @@
   &__img {
     width: 100%;
     height: auto;
-    border-top-left-radius: 1rem;
-    border-top-right-radius: 1rem;
   }
 
   &__title-container {
