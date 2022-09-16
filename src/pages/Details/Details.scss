@@ -1,0 +1,12 @@
+@use "../../styles/partials/globals/variables" as *;
+@use "../../styles/partials/globals/mixins" as *;
+
+.details {
+  margin-top: 15.5rem;
+  background-color: $brandSecondary;
+  color: $ice;
+
+  @include tablet {
+    margin-top: 21rem;
+  }
+}

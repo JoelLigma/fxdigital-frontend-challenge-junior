@@ -4,10 +4,9 @@ import "./Card.scss";
 import unavailable from "../../assets/images/preview-unavailable.png";
 import Button from "../Button/Button.jsx";
 
-const Card = ({ image, name, ep, summary, airtime }) => {
+const Card = ({ image, name, ep, summary, airtime, id }) => {
   return (
     <article className="card">
-      <div className="card__top-layer"></div>
       <div className="card__container">
         <img
           src={
@@ -26,7 +25,7 @@ const Card = ({ image, name, ep, summary, airtime }) => {
       <p className="card__text"> {`${summary.slice(3, -4)}`}</p>
       <h3 className="card__schedule"> {`Local airtime: ${airtime}`}</h3>
       <div className="card__button-container">
-        <NavLink to="">
+        <NavLink to={`/show-details/${id}`} className="card__link">
           <Button label="Read more" />
         </NavLink>
       </div>

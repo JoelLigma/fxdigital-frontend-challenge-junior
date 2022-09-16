@@ -66,19 +66,14 @@
     padding: 1rem;
   }
 
-  &__top-layer {
-    position: absolute;
-    background-color: $brandPrimary;
-    width: 5rem;
-    height: 30rem;
-    transform: rotate(45deg);
-    top: -186px;
-    left: 46px;
-  }
-
   &__button-container {
     position: relative;
     width: 100%;
     padding-left: 2rem;
+  }
+
+  &__link {
+    width: 15.4rem;
+    display: inline-block;
   }
 }

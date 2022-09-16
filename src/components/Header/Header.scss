@@ -62,6 +62,10 @@
     filter: invert(12%) sepia(89%) saturate(6324%) hue-rotate(338deg)
       brightness(90%) contrast(106%);
 
+    @include tablet {
+      width: 14.8rem;
+      height: 3.2rem;
+    }
     &--white {
       filter: brightness(0%) invert(100%);
     }
