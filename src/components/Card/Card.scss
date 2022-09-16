@@ -24,7 +24,15 @@
     max-height: 35rem;
 
     @include desktop {
-      max-height: 22rem;
+      max-height: 21rem;
+    }
+
+    &--unavailable {
+      height: 21rem;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      background-color: rgba(255, 255, 255, 0.97);
     }
   }
 
@@ -48,6 +56,10 @@
   &__img {
     width: 100%;
     height: auto;
+
+    &--unavailable {
+      height: 43%;
+    }
   }
 
   &__title-container {

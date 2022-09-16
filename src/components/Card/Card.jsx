@@ -1,21 +1,27 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "./Card.scss";
-import unavailable from "../../assets/images/preview-unavailable.png";
+import unavailableTwo from "../../assets/icons/unavailable.svg";
 import Button from "../Button/Button.jsx";
 
 const Card = ({ image, name, ep, summary, airtime, id }) => {
   return (
     <article className="card">
-      <div className="card__container">
+      <div
+        className={`card__container ${
+          image === null ? "card__container--unavailable" : ""
+        }`}
+      >
         <img
           src={
             image !== null && Object.keys(image).includes("original")
               ? image.original
-              : unavailable
+              : unavailableTwo
           }
           alt="No preview picture available"
-          className="card__img"
+          className={`card__img ${
+            image === null ? "card__img--unavailable" : ""
+          }`}
         />
       </div>
       <div className="card__title-container">

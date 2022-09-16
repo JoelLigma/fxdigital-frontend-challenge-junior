@@ -18,6 +18,7 @@
   gap: 0.7rem;
   clip-path: polygon(0 0, 0 100%, 85.5% 100%, 100% 68.5%, 100% 0);
   -webkit-clip-path: polygon(0 0, 0 100%, 85.5% 100%, 100% 68.5%, 100% 0);
+  margin-bottom: 1rem;
 
   &:hover {
     cursor: pointer;
@@ -40,9 +41,11 @@
     width: 20rem;
     background-color: $brandSecondary;
     font-size: 1.8rem;
+    margin-bottom: 0;
   }
 
   &__watch {
     margin-top: 3rem;
+    margin-bottom: 0;
   }
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import "./Details.scss";
-import unavailable from "../../assets/images/preview-unavailable.png";
+import unavailable from "../../assets/icons/unavailable.svg";
 import element from "../../assets/icons/fx-element.svg";
 import Button from "../../components/Button/Button";
 
@@ -13,6 +13,9 @@ const Details = ({ data }) => {
 
   const selectedShow = findSelectedShow(data);
 
+  // jump to top of page
+  window.scrollTo(0, 0);
+
   if (selectedShow === undefined) {
     return (
       <h1 className="details__error">
@@ -20,10 +23,6 @@ const Details = ({ data }) => {
       </h1>
     );
   }
-
-  // jump to top of page
-  window.scrollTo(0, 0);
-
   return (
     <section className="details">
       <p className="details__header">Web TV Streaming</p>
@@ -32,7 +31,13 @@ const Details = ({ data }) => {
         <div className="details__container-left">
           <img className="details__elements" src={element} alt="FX elements" />
 
-          <div className="details__container-img">
+          <div
+            className={`details__container-img ${
+              selectedShow.image === null
+                ? "details__container-img--unavailable"
+                : ""
+            }`}
+          >
             <img
               src={
                 selectedShow.image !== null &&
@@ -41,7 +46,9 @@ const Details = ({ data }) => {
                   : unavailable
               }
               alt="No preview picture available"
-              className="details__img"
+              className={`details__img ${
+                selectedShow.image === null ? "details__img--unavailable" : ""
+              }`}
             />
           </div>
         </div>
@@ -73,7 +80,8 @@ const Details = ({ data }) => {
           <p className="details__text">
             <span className="details__text--bold">{"Runtime: "}</span>
             {`${
-              selectedShow.runtime !== null && selectedShow.runtime.length > 0
+              selectedShow.runtime !== null &&
+              String(selectedShow.runtime).length > 0
                 ? `${selectedShow.runtime} minutes`
                 : "N/A"
             }`}

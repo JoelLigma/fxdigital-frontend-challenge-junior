@@ -4,7 +4,6 @@ import Header from "./components/Header/Header";
 import Home from "./pages/Home/Home";
 import Footer from "./components/Footer/Footer";
 import Details from "./pages/Details/Details";
-// import "./global.css";
 import "./styles/partials/globals/_resets.scss";
 import { API_ENDPOINT } from "./api/api";
 
