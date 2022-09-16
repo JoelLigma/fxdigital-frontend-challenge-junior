@@ -36,4 +36,9 @@
     transition: 0.4s;
     margin-top: 0.4rem;
   }
+
+  &__contact {
+    background-color: $brandSecondary;
+    font-size: 1.8rem;
+  }
 }

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Home from "./pages/Home/Home";
+import Footer from "./components/Footer/Footer";
 // import "./global.css";
 import "./styles/partials/globals/_resets.scss";
 
@@ -22,6 +23,7 @@ class App extends Component {
               </Routes>
             </section>
           </main>
+          <Footer />
         </BrowserRouter>
       </>
     );
