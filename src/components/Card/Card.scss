@@ -59,6 +59,8 @@
 
     &--unavailable {
       height: 43%;
+      filter: invert(84%) sepia(7%) saturate(17%) hue-rotate(66deg)
+        brightness(98%) contrast(99%);
     }
   }
 

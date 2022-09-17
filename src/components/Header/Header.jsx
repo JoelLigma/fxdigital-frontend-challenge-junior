@@ -4,13 +4,13 @@ import logo from "../../assets/logos/fxdigitallogo.png";
 import "./Header.scss";
 
 export const Header = () => {
-  const [scrolled, setScrolled] = useState(false);
+  const [scrolled, setScrolled] = useState(true);
 
   useEffect(() => {
     document.addEventListener("scroll", () => {
       window.scrollY > 20 ? setScrolled(false) : setScrolled(true);
     });
-  });
+  }, []);
 
   return (
     <header className={`header ${scrolled ? "header--scrolled" : ""}`}>

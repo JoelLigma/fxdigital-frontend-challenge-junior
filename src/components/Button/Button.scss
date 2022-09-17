@@ -45,7 +45,12 @@
   }
 
   &__watch {
-    margin-top: 3rem;
-    margin-bottom: 0;
+    width: 100%;
+
+    @include tablet {
+      width: 15.4rem;
+      margin-top: 3rem;
+      margin-bottom: 0;
+    }
   }
 }
