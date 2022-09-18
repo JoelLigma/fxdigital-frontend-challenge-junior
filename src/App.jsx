@@ -6,6 +6,7 @@ import Footer from "./components/Footer/Footer";
 import Details from "./pages/Details/Details";
 import "./styles/partials/globals/_resets.scss";
 import { API_ENDPOINT } from "./api/api";
+import { convertDate, handleError } from "./utils/utils";
 
 /**
  * The starting page for your App
@@ -16,15 +17,8 @@ const App = () => {
   const [country, setCountry] = useState("GB");
   const [data, setData] = useState([]);
 
-  const handleError = (response) => {
-    if (!response.ok) {
-      throw Error(response.statusText);
-    }
-    return response;
-  };
-
   const getData = () => {
-    fetch(`${API_ENDPOINT}/web?date=${date}&country=${country}`, {
+    fetch(`${API_ENDPOINT}/schedule/web?date=${date}&country=${country}`, {
       method: "GET",
     })
       .then(handleError)
@@ -34,17 +28,6 @@ const App = () => {
         console.log(data); // can be removed later
       })
       .catch((error) => console.error("GET web tv data error:", error));
-  };
-
-  const convertDate = (date) => {
-    const selectedDate = new Date(date);
-    const options = {
-      weekday: "long",
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-    };
-    return selectedDate.toLocaleDateString("en-GB", options);
   };
 
   useEffect(() => {

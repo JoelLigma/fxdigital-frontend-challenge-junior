@@ -2,7 +2,7 @@
 @use "../../styles/partials/globals/mixins" as *;
 
 .details {
-  padding: 15.5rem 2rem 12rem;
+  padding: 15.5rem 2rem 0;
   background-color: $brandSecondary;
   color: $ice;
   font-size: 1.6rem;

@@ -1,3 +1,3 @@
-const API_ENDPOINT = "https://api.tvmaze.com/schedule";
+const API_ENDPOINT = "https://api.tvmaze.com";
 
 module.exports = { API_ENDPOINT };

@@ -1,20 +1,37 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import "./Details.scss";
 import unavailable from "../../assets/icons/unavailable.svg";
 import element from "../../assets/icons/fx-element.svg";
 import Button from "../../components/Button/Button";
+import { API_ENDPOINT } from "../../api/api";
+import { handleError, findSelectedShow } from "../../utils/utils";
+import Episodes from "../../components/Episodes/Episodes";
 
 const Details = ({ data }) => {
-  const findSelectedShow = (data) => {
-    const selectedShowObj = useParams();
-    return data.find((item) => item.id === Number(selectedShowObj.showId));
-  };
+  const [episodeData, setEpisodeData] = useState([]);
 
   const selectedShow = findSelectedShow(data);
 
+  const getEpisodesData = (selectedShow) => {
+    const showId = selectedShow._embedded.show.id;
+    fetch(`${API_ENDPOINT}/shows/${showId}/episodes`, {
+      method: "GET",
+    })
+      .then(handleError)
+      .then((response) => response.json())
+      .then((data) => {
+        setEpisodeData(data);
+        console.log("setEpisodeData", data); // can be removed later
+      })
+      .catch((error) => console.error("GET episode data error:", error));
+  };
+
   // jump to top of page
   window.scrollTo(0, 0);
+
+  useEffect(() => {
+    getEpisodesData(selectedShow);
+  }, []);
 
   if (selectedShow === undefined) {
     return (
@@ -106,6 +123,7 @@ const Details = ({ data }) => {
           </a>
         </div>
       </div>
+      <Episodes episodeData={episodeData} />
     </section>
   );
 };
