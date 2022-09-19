@@ -13,12 +13,15 @@ import { convertDate, handleError } from "./utils/utils";
  */
 
 const App = () => {
+  // hard-coded date for demo purposes to display ~10 items
   const [date, setDate] = useState("2022-09-05");
-  const [country, setCountry] = useState("GB");
+  // for non-demo purposes, the default date is today's date
+  // const [date, setDate] = useState(new Date());
+
   const [data, setData] = useState([]);
 
   const getData = () => {
-    fetch(`${API_ENDPOINT}/schedule/web?date=${date}&country=${country}`, {
+    fetch(`${API_ENDPOINT}/schedule/web?date=${date}&country=GB`, {
       method: "GET",
     })
       .then(handleError)
@@ -32,12 +35,12 @@ const App = () => {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [date]);
 
   return (
     <>
       <BrowserRouter>
-        <Header />
+        <Header setDate={setDate} date={date} />
         <main>
           <section>
             <Routes>

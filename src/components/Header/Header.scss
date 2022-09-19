@@ -32,6 +32,26 @@
   align-items: center;
   color: $brandPrimary;
 
+  &__list {
+    display: flex;
+    gap: 2rem;
+  }
+
+  &__list-item {
+    display: inline-block;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #f0ffff;
+
+    @include tablet {
+      opacity: 0.7;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
   &__link {
     display: inline-block;
     font-size: 1.6rem;
@@ -39,7 +59,7 @@
     color: $ice;
 
     @include tablet {
-      opacity: 0.7;
+      // opacity: 0.7;
 
       &:hover {
         opacity: 1;
@@ -70,4 +90,11 @@
       filter: brightness(0%) invert(100%);
     }
   }
+}
+
+.react-calendar {
+  position: absolute;
+  top: 6rem;
+  right: 0;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }

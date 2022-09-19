@@ -6,8 +6,15 @@ export const Home = ({ data, date }) => {
   // jump to top of page
   window.scrollTo(0, 0);
 
+  console.log("Home", data);
+
+  // if (date.length === 0) {
+  //   return (
+
+  //   )
+  // }
   return (
-    <div className="home">
+    <section className="home">
       <div className="home__background"></div>
       <h1 className="home__title">{`Web TV Streaming Program \non ${date}`}</h1>
       <div className="home__container">
@@ -23,7 +30,7 @@ export const Home = ({ data, date }) => {
           />
         ))}
       </div>
-    </div>
+    </section>
   );
 };
 
