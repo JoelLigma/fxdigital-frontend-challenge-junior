@@ -9,8 +9,18 @@ import Episodes from "../../components/Episodes/Episodes";
 
 const Details = ({ data }) => {
   const [episodeData, setEpisodeData] = useState([]);
+  const [selectedEp, setSelectedEp] = useState({});
 
   const selectedShow = findSelectedShow(data);
+  console.log("selected show", selectedShow);
+
+  const findSelectedEpisode = (data, id) => {
+    setSelectedEp(data.find((ep) => ep.id === id));
+    console.log(
+      "findSelectedEpisode",
+      data.find((ep) => ep.id === id)
+    );
+  };
 
   const getEpisodesData = (selectedShow) => {
     const showId = selectedShow._embedded.show.id;
@@ -22,6 +32,7 @@ const Details = ({ data }) => {
       .then((data) => {
         setEpisodeData(data);
         console.log("setEpisodeData", data); // can be removed later
+        findSelectedEpisode(data, selectedShow.id);
       })
       .catch((error) => console.error("GET episode data error:", error));
   };
@@ -33,7 +44,7 @@ const Details = ({ data }) => {
     getEpisodesData(selectedShow);
   }, []);
 
-  if (selectedShow === undefined) {
+  if (selectedShow === undefined || Object.keys(selectedEp).length === 0) {
     return (
       <h1 className="details__error">
         Sorry, we could not find the selected show.
@@ -47,41 +58,39 @@ const Details = ({ data }) => {
       <div className="details__wrapper">
         <div className="details__container-left">
           <img className="details__elements" src={element} alt="FX elements" />
-
           <div
             className={`details__container-img ${
-              selectedShow.image === null
+              selectedEp.image === null
                 ? "details__container-img--unavailable"
                 : ""
             }`}
           >
             <img
               src={
-                selectedShow.image !== null &&
-                Object.keys(selectedShow.image).includes("original")
-                  ? selectedShow.image.original
+                selectedEp.image !== null
+                  ? selectedEp.image.original
                   : unavailable
               }
-              alt="No preview picture available"
+              alt="Preview pciture"
               className={`details__img ${
-                selectedShow.image === null ? "details__img--unavailable" : ""
+                selectedEp.image === null ? "details__img--unavailable" : ""
               }`}
             />
           </div>
         </div>
         <div className="details__container-right">
-          <p className="details__text details__text--large">{`${selectedShow._embedded.show.name}: Season ${selectedShow.season}, ${selectedShow.name}`}</p>
+          <p className="details__text details__text--large">{`Season ${selectedEp.season}, Episode ${selectedEp.number}: ${selectedEp.name}`}</p>
           <p className="details__text">{`${
-            selectedShow.summary !== null && selectedShow.summary.length > 0
-              ? selectedShow.summary.replaceAll("<p>", "").replaceAll("</p>")
+            selectedEp.summary !== null && selectedEp.summary.length > 0
+              ? selectedEp.summary.replaceAll("<p>", "").replaceAll("</p>", "")
               : "N/A"
           }`}</p>
           <p className="details__text">
             <span className="details__text--bold">{"Avg. rating: "}</span>
             {`${
-              selectedShow._embedded.show.rating.average !== null &&
-              String(selectedShow._embedded.show.rating.average).length > 0
-                ? selectedShow._embedded.show.rating.average
+              selectedShow._embedded.show.rating.average !== null //&&
+                ? //   String(selectedShow._embedded.show.rating.average).length > 0
+                  selectedShow._embedded.show.rating.average
                 : "N/A"
             }`}
           </p>
@@ -97,9 +106,9 @@ const Details = ({ data }) => {
           <p className="details__text">
             <span className="details__text--bold">{"Runtime: "}</span>
             {`${
-              selectedShow.runtime !== null &&
-              String(selectedShow.runtime).length > 0
-                ? `${selectedShow.runtime} minutes`
+              selectedEp.runtime !== null &&
+              String(selectedEp.runtime).length > 0
+                ? `${selectedEp.runtime} minutes`
                 : "N/A"
             }`}
           </p>
@@ -123,7 +132,10 @@ const Details = ({ data }) => {
           </a>
         </div>
       </div>
-      <Episodes episodeData={episodeData} />
+      <Episodes
+        episodeData={episodeData}
+        findSelectedEpisode={findSelectedEpisode}
+      />
     </section>
   );
 };

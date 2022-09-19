@@ -8,13 +8,13 @@
   font-size: 1.6rem;
   border-bottom: 1px solid hsla(0, 0%, 59%, 0.5);
 
-  @include tablet {
-    padding: 21rem 3.6rem 14rem;
-  }
+  // @include tablet {
+  //   padding: 21rem 3.6rem 14rem;
+  // }
 
-  @include desktop {
-    padding: 21rem calc((100vw - 1208px) / 2) 14rem;
-  }
+  // @include desktop {
+  //   padding: 21rem calc((100vw - 1208px) / 2) 14rem;
+  // }
 
   &__header {
     opacity: 0.5;
@@ -22,12 +22,28 @@
     font-size: 2.1rem;
     line-height: 2.8rem;
     font-weight: 500;
+
+    @include tablet {
+      padding: 0 3.6rem;
+    }
+
+    @include desktop {
+      padding: 0 calc((100vw - 1208px) / 2);
+    }
   }
 
   &__title {
     font-size: 4rem;
     margin-bottom: 3rem;
-    max-width: 49rem;
+    // max-width: 49rem;
+
+    @include tablet {
+      padding: 0 3.6rem;
+    }
+
+    @include desktop {
+      padding: 0 0 0 calc((100vw - 1208px) / 2);
+    }
   }
 
   &__text {
@@ -51,6 +67,11 @@
 
     @include tablet {
       flex-direction: row;
+      padding: 0 3.6rem;
+    }
+
+    @include desktop {
+      padding: 0 calc((100vw - 1208px) / 2);
     }
   }
 

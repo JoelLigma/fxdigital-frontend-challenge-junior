@@ -1,10 +1,11 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import "./Episodes.scss";
-import WithScrollbar from "react-multi-carousel";
+import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import unavailable from "../../assets/icons/unavailable.svg";
 
-const Episodes = ({ episodeData }) => {
+const Episodes = ({ episodeData, findSelectedEpisode }) => {
+  console.log("Episodes comp", episodeData);
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1280 },
@@ -23,14 +24,29 @@ const Episodes = ({ episodeData }) => {
   return (
     <section className="episodes">
       <h3 className="episodes__header">More Episodes</h3>
-      <WithScrollbar responsive={responsive}>
+      <Carousel responsive={responsive}>
         {episodeData.map((ep) => (
-          <NavLink to="/" key={ep.id}>
-            <img src={ep.image.original} className="episodes__img" />
+          <article
+            key={ep.id}
+            onClick={() => findSelectedEpisode(episodeData, ep.id)}
+            className="episodes__article"
+          >
+            <div
+              className={`episodes__container ${
+                ep.image === null ? "episodes__container--unavailable" : ""
+              }`}
+            >
+              <img
+                src={ep.image !== null ? ep.image.original : unavailable}
+                className={`episodes__img ${
+                  ep.image === null ? "episodes__img--unavailable" : ""
+                }`}
+              />
+            </div>
             <h4 className="episodes__title">{ep.name}</h4>
-          </NavLink>
+          </article>
         ))}
-      </WithScrollbar>
+      </Carousel>
     </section>
   );
 };

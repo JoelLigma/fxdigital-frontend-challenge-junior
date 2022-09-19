@@ -10,7 +10,6 @@ export const Home = ({ data, date }) => {
     <div className="home">
       <div className="home__background"></div>
       <h1 className="home__title">{`Web TV Streaming Program \non ${date}`}</h1>
-      <h2 className="home__title">{``}</h2>
       <div className="home__container">
         {data.map((item) => (
           <Card

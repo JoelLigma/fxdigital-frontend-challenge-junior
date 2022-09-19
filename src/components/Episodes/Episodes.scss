@@ -3,9 +3,17 @@
 
 .episodes {
   background-color: #fff;
-  margin: 3rem -2rem 0px;
+  margin: 8rem -2rem 0px;
   padding-top: 7rem;
   padding-bottom: 11rem;
+
+  @include tablet {
+    padding: 7rem 3.6rem 11rem;
+  }
+
+  @include desktop {
+    padding: 7rem calc((100vw - 1208px) / 2) 11rem;
+  }
 
   &__header {
     color: $brandPrimary;
@@ -18,8 +26,8 @@
   &__img {
     width: 100%;
     padding: 0 2rem;
-    clip-path: polygon(0 0, 0 100%, 83.5% 100%, 100% 90.5%, 100% 0);
-    -webkit-clip-path: polygon(0 0, 0 100%, 83.5% 100%, 100% 90.5%, 100% 0);
+    clip-path: polygon(0 0, 0 100%, 83.5% 100%, 100% 61.5%, 100% 0);
+    -webkit-clip-path: polygon(0 0, 0 100%, 83.5% 100%, 100% 61.5%, 100% 0);
     transition: 0.4s ease-in-out;
 
     &:hover {
@@ -30,6 +38,51 @@
 
     @include tablet {
       padding: 0 3.6rem;
+      // clip-path: polygon(0 0, 0 100%, 83.5% 100%, 100% 90.5%, 100% 0);
+      // -webkit-clip-path: polygon(0 0, 0 100%, 83.5% 100%, 100% 90.5%, 100% 0);
+      transition: 0.4s ease-in-out;
+    }
+
+    &--unavailable {
+      width: 59%;
+      padding: 0 2rem;
+      // width: 20rem;
+      // height: 10rem;
+      // display: flex;
+      // align-items: center;
+      // justify-content: center;
+      filter: invert(84%) sepia(7%) saturate(17%) hue-rotate(66deg)
+        brightness(98%) contrast(99%);
+    }
+  }
+
+  &__article {
+    // height: 39rem;
+    // width: auto;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    // height: 19.4rem;
+    // height: 30.4rem;
+
+    @include tablet {
+      width: 41.6rem;
+      // height: 19.4rem;
+    }
+
+    &--unavailable {
+      // height: 19.3rem;
+      // width: 100%;
+      // height: 35rem;
+
+      @include tablet {
+        height: 19.4rem;
+      }
     }
   }
 
