@@ -28,11 +28,16 @@
     }
 
     &--unavailable {
-      height: 21rem;
+      // height: 21rem;
+      min-height: 30rem;
       width: 100%;
       display: flex;
       align-items: center;
       background-color: rgba(255, 255, 255, 0.97);
+
+      @include desktop {
+        min-height: unset;
+      }
     }
   }
 
@@ -62,14 +67,22 @@
     max-height: 30rem;
     min-height: 30rem;
 
+    @include desktop {
+      min-height: unset;
+    }
+
     &--unavailable {
       height: 43%;
       filter: invert(84%) sepia(7%) saturate(17%) hue-rotate(66deg)
         brightness(98%) contrast(99%);
       object-fit: contain;
       object-position: center;
-      max-height: none;
+      max-height: 10rem;
       min-height: 10rem;
+
+      @include desktop {
+        max-height: 30rem;
+      }
     }
   }
 

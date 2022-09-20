@@ -3,7 +3,7 @@
 
 .episodes {
   background-color: #fff;
-  margin: 8rem -2rem 0px;
+  margin: 12rem -2rem 0px;
   padding-top: 7rem;
   padding-bottom: 11rem;
 
@@ -36,7 +36,7 @@
     -webkit-clip-path: polygon(0 0, 0 100%, 83.5% 100%, 100% 61.5%, 100% 0);
     transition: 0.4s ease-in-out;
     max-height: 35rem;
-    min-height: 35rem;
+    min-height: unset;
     object-fit: cover;
     object-position: top;
 
