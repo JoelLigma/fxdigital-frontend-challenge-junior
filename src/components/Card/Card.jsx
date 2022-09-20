@@ -25,7 +25,7 @@ const Card = ({ image, name, ep, summary, airtime, id }) => {
           <h2 className="card__text">{ep}</h2>
           <h1 className="card__title">{name}</h1>
         </div>
-        <p className="card__text"> {`${summary.slice(3, -4)}`}</p>
+        <p className="card__text"> {`${summary}`}</p>
         <div className="card__subcontainer">
           <h3 className="card__schedule"> {`Local airtime: ${airtime}`}</h3>
           <div className="card__button-container">

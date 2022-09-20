@@ -1,7 +1,8 @@
 import React from "react";
 import Card from "../../components/Card/Card";
 import "./Home.scss";
-import search from "../../assets/icons/search.svg";
+import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
+import { removeHTMLTags } from "../../utils/utils";
 
 export const Home = ({ data, date }) => {
   // jump to top of page
@@ -11,17 +12,8 @@ export const Home = ({ data, date }) => {
     <section className="home">
       <div className="home__background"></div>
       <h1 className="home__title">{`Web TV Streaming Program \non ${date}`}</h1>
-
       {data.length === 0 ? (
-        <section className="error">
-          <div className="home__not-found">
-            <img src={search} alt="magnifying glass" className="home__search" />
-            <h2 className="home__error">
-              Sorry, we could not find any episodes that air on web/streaming
-              channels on the selected date.
-            </h2>
-          </div>
-        </section>
+        <ErrorMessage />
       ) : (
         <div className="home__container">
           {data.map((item) => (
@@ -31,7 +23,7 @@ export const Home = ({ data, date }) => {
               }
               name={`${item._embedded.show.name}: Season ${item.season}`}
               ep={item.name}
-              summary={item._embedded.show.summary}
+              summary={removeHTMLTags(item._embedded.show.summary)}
               airtime={item.airtime}
               key={item.id}
               id={item.id}

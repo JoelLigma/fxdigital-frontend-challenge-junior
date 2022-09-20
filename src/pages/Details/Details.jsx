@@ -8,12 +8,11 @@ import {
   handleError,
   findSelectedShow,
   findSelectedEpisode,
+  removeHTMLTags,
 } from "../../utils/utils";
 import Episodes from "../../components/Episodes/Episodes";
 
 const Details = ({ data }) => {
-  console.log("Details", data);
-
   const [episodeData, setEpisodeData] = useState([]);
   const [selectedEp, setSelectedEp] = useState({});
 
@@ -86,7 +85,7 @@ const Details = ({ data }) => {
           <p className="details__text details__text--large">{`Season ${selectedEp.season}, Episode ${selectedEp.number}: ${selectedEp.name}`}</p>
           <p className="details__text">{`${
             selectedEp.summary !== null && selectedEp.summary.length > 0
-              ? selectedEp.summary.replace(/<[^>]*>?/gm, "")
+              ? removeHTMLTags(selectedEp.summary)
               : "N/A"
           }`}</p>
           <p className="details__text">

@@ -27,4 +27,28 @@ const findSelectedEpisode = (setSelectedEp, data, id) => {
   setSelectedEp(data.find((ep) => ep.id === id));
 };
 
-export { handleError, convertDate, findSelectedShow, findSelectedEpisode };
+const removeHTMLTags = (str) => {
+  let processedString = "";
+  let open = false;
+
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === "<") {
+      open = true;
+    } else if (open && str[i] !== ">") {
+      continue;
+    } else if (open && str[i] === ">") {
+      open = false;
+    } else {
+      processedString += str[i];
+    }
+  }
+  return processedString;
+};
+
+export {
+  handleError,
+  convertDate,
+  findSelectedShow,
+  findSelectedEpisode,
+  removeHTMLTags,
+};
