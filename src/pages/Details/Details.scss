@@ -1,0 +1,150 @@
+@use "../../styles/partials/globals/variables" as *;
+@use "../../styles/partials/globals/mixins" as *;
+
+.details {
+  padding: 15.5rem 2rem 0;
+  background-color: $brandSecondary;
+  color: $ice;
+  font-size: 1.6rem;
+  border-bottom: 1px solid hsla(0, 0%, 59%, 0.5);
+
+  &__header {
+    opacity: 0.5;
+    margin-bottom: 2.3rem;
+    font-size: 2.1rem;
+    line-height: 2.8rem;
+    font-weight: 500;
+
+    @include tablet {
+      padding: 0 3.6rem;
+    }
+
+    @include desktop {
+      padding: 0 calc((100vw - 1208px) / 2);
+    }
+  }
+
+  &__title {
+    font-size: 4rem;
+    margin-bottom: 3rem;
+
+    @include tablet {
+      padding: 0 3.6rem;
+    }
+
+    @include desktop {
+      padding: 0 0 0 calc((100vw - 1208px) / 2);
+    }
+  }
+
+  &__text {
+    font-size: 1.8rem;
+    line-height: 2.8rem;
+
+    &--large {
+      font-size: 3rem;
+      color: $brandPrimary;
+      font-weight: 600;
+      line-height: 3rem;
+    }
+
+    &--bold {
+      font-weight: 600;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+
+    @include tablet {
+      flex-direction: row;
+      padding: 0 3.6rem;
+    }
+
+    @include desktop {
+      padding: 0 calc((100vw - 1208px) / 2);
+    }
+  }
+
+  &__container-img {
+    clip-path: polygon(0 0, 0 100%, 83.5% 100%, 100% 90.5%, 100% 0);
+    -webkit-clip-path: polygon(0 0, 0 100%, 83.5% 100%, 100% 90.5%, 100% 0);
+    position: relative;
+    width: 100%;
+
+    &--unavailable {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(255, 255, 255, 0.97);
+    }
+  }
+
+  &__container-right {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+
+    @include tablet {
+      width: 100rem;
+      margin-left: 4rem;
+      margin-top: 0;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+
+    &--unavailable {
+      width: 18rem;
+      height: 18rem;
+      filter: invert(84%) sepia(7%) saturate(17%) hue-rotate(66deg)
+        brightness(98%) contrast(99%);
+    }
+  }
+
+  &__elements {
+    display: block;
+    z-index: 9;
+    top: 6rem;
+    position: absolute;
+    left: -1.3rem;
+    width: 8.3rem;
+    height: 8.5rem;
+    filter: invert(18%) sepia(69%) saturate(7426%) hue-rotate(340deg)
+      brightness(106%) contrast(113%);
+
+    @include tablet {
+      width: 12.2rem;
+      height: 12.4rem;
+    }
+
+    @include desktop {
+      left: -5.7rem;
+    }
+  }
+
+  &__container-left {
+    position: relative;
+    display: flex;
+    height: 37rem;
+    width: auto;
+
+    @include tablet {
+      height: 56rem;
+      width: 71rem;
+    }
+  }
+
+  &__error {
+    font-size: 2rem;
+    font-weight: 400;
+    margin: 2rem;
+  }
+}

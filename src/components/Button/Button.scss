@@ -1,0 +1,56 @@
+@use "../../styles/partials/globals/mixins" as *;
+@use "../../styles/partials/globals/variables" as *;
+
+.button {
+  font-family: proxima-nova, Proxima Nova, -apple-system, BlinkMacSystemFont,
+    Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+  border: none;
+  font-size: 1.6rem;
+  width: 15.4rem;
+  height: 3.9rem;
+  background-color: $brandPrimary;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  clip-path: polygon(0 0, 0 100%, 85.5% 100%, 100% 68.5%, 100% 0);
+  -webkit-clip-path: polygon(0 0, 0 100%, 85.5% 100%, 100% 68.5%, 100% 0);
+  margin-bottom: 1rem;
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+
+    .button__img {
+      transition: 0.4s;
+      transform: translateX(15%);
+    }
+  }
+
+  &__img {
+    width: 3.4rem;
+    height: 1.4rem;
+    filter: brightness(0%) invert(100%);
+    transition: 0.4s;
+  }
+
+  &__contact {
+    width: 20rem;
+    background-color: $brandSecondary;
+    font-size: 1.8rem;
+    margin-bottom: 0;
+  }
+
+  &__watch {
+    width: 100%;
+
+    @include tablet {
+      width: 15.4rem;
+      margin-top: 3rem;
+      margin-bottom: 0;
+    }
+  }
+}

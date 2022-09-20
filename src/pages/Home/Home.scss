@@ -1,0 +1,67 @@
+@use "../../styles/partials/globals/mixins" as *;
+@use "../../styles/partials/globals/variables" as *;
+
+.home {
+  margin-top: 15.5rem;
+
+  @include tablet {
+    margin-top: 21rem;
+  }
+
+  &__title {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 4rem;
+    padding: 0 1.6rem;
+    white-space: pre-wrap;
+    font-size: 3rem;
+
+    @include tablet {
+      font-size: 4rem;
+      padding: 0 3.6rem;
+    }
+
+    @include desktop {
+      padding: 0 calc((100vw - 1208px) / 2);
+    }
+  }
+
+  &__background {
+    @include tablet {
+      background-color: white;
+      position: fixed;
+      top: 22.7rem;
+      left: 79%;
+      width: 125%;
+      height: 120.8rem;
+      z-index: -1;
+      transform: rotate(117deg);
+    }
+
+    @include desktop {
+      left: 29%;
+      top: 16.6rem;
+    }
+  }
+
+  &__container {
+    margin: 0 2rem 6rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 3rem;
+    column-gap: 2rem;
+
+    @include tablet {
+      row-gap: 4rem;
+      column-gap: 4rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin: 0 3.6rem 6rem;
+    }
+
+    @include desktop {
+      margin: 0 calc((100vw - 1208px) / 2) 6rem;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+}

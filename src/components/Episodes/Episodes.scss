@@ -1,0 +1,91 @@
+@use "../../styles/partials/globals/mixins" as *;
+@use "../../styles/partials/globals/variables" as *;
+
+.episodes {
+  background-color: #fff;
+  margin: 12rem -2rem 0px;
+  padding-top: 7rem;
+  padding-bottom: 11rem;
+
+  @include tablet {
+    padding: 7rem 3.6rem 11rem;
+  }
+
+  @include desktop {
+    padding: 7rem calc((100vw - 1208px) / 2) 11rem;
+  }
+
+  &__article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__header {
+    color: $brandPrimary;
+    margin-bottom: 3rem;
+    font-weight: 700;
+    font-size: 3rem;
+    padding: 0 2rem;
+  }
+
+  &__img {
+    width: 100%;
+    padding: 0 2rem;
+    clip-path: polygon(0 0, 0 100%, 83.5% 100%, 100% 61.5%, 100% 0);
+    -webkit-clip-path: polygon(0 0, 0 100%, 83.5% 100%, 100% 61.5%, 100% 0);
+    transition: 0.4s ease-in-out;
+    max-height: 35rem;
+    min-height: unset;
+    object-fit: cover;
+    object-position: top;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.025);
+      transition: 0.4s ease-in-out;
+    }
+
+    @include tablet {
+      padding: 0 3.6rem;
+      transition: 0.4s ease-in-out;
+      min-height: 19.35rem;
+      max-height: 19.35rem;
+    }
+
+    &--unavailable {
+      width: 59%;
+      padding: 0 2rem;
+      filter: invert(84%) sepia(7%) saturate(17%) hue-rotate(66deg)
+        brightness(98%) contrast(99%);
+    }
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+
+    @include tablet {
+      width: 41.6rem;
+    }
+
+    &--unavailable {
+      @include tablet {
+        height: 19.4rem;
+      }
+    }
+  }
+
+  &__title {
+    color: black;
+    padding: 0 2rem;
+    font-size: 2.6rem;
+
+    @include tablet {
+      padding: 0 3.6rem;
+    }
+  }
+}
