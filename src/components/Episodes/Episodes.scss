@@ -15,6 +15,12 @@
     padding: 7rem calc((100vw - 1208px) / 2) 11rem;
   }
 
+  &__article {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   &__header {
     color: $brandPrimary;
     margin-bottom: 3rem;
@@ -29,6 +35,10 @@
     clip-path: polygon(0 0, 0 100%, 83.5% 100%, 100% 61.5%, 100% 0);
     -webkit-clip-path: polygon(0 0, 0 100%, 83.5% 100%, 100% 61.5%, 100% 0);
     transition: 0.4s ease-in-out;
+    max-height: 35rem;
+    min-height: 35rem;
+    object-fit: cover;
+    object-position: top;
 
     &:hover {
       cursor: pointer;
@@ -39,6 +49,8 @@
     @include tablet {
       padding: 0 3.6rem;
       transition: 0.4s ease-in-out;
+      min-height: 19.35rem;
+      max-height: 19.35rem;
     }
 
     &--unavailable {
@@ -71,6 +83,7 @@
     color: black;
     padding: 0 2rem;
     font-size: 2.6rem;
+    align-self: flex-start;
 
     @include tablet {
       padding: 0 3.6rem;

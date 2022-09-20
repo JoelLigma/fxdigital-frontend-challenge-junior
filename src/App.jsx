@@ -28,7 +28,6 @@ const App = () => {
       .then((response) => response.json())
       .then((data) => {
         setData(data);
-        console.log(data); // can be removed later
       })
       .catch((error) => console.error("GET web tv data error:", error));
   };
@@ -42,7 +41,7 @@ const App = () => {
       <BrowserRouter>
         <Header setDate={setDate} date={date} />
         <main>
-          <section>
+          <section className="app">
             <Routes>
               <Route
                 path="/show-details/:showId"

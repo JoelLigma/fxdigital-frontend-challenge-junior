@@ -3,9 +3,9 @@ import "./Episodes.scss";
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import unavailable from "../../assets/icons/unavailable.svg";
+import { findSelectedEpisode } from "../../utils/utils";
 
-const Episodes = ({ episodeData, findSelectedEpisode }) => {
-  console.log("Episodes comp", episodeData);
+const Episodes = ({ episodeData, setSelectedEp, showImage }) => {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 1280 },
@@ -28,18 +28,28 @@ const Episodes = ({ episodeData, findSelectedEpisode }) => {
         {episodeData.map((ep) => (
           <article
             key={ep.id}
-            onClick={() => findSelectedEpisode(episodeData, ep.id)}
+            onClick={() =>
+              findSelectedEpisode(setSelectedEp, episodeData, ep.id)
+            }
             className="episodes__article"
           >
             <div
               className={`episodes__container ${
-                ep.image === null ? "episodes__container--unavailable" : ""
+                showImage === null ? "episodes__container--unavailable" : ""
               }`}
             >
               <img
-                src={ep.image !== null ? ep.image.original : unavailable}
+                src={
+                  ep.image !== null
+                    ? ep.image.original
+                    : showImage !== null
+                    ? showImage
+                    : unavailable
+                }
                 className={`episodes__img ${
-                  ep.image === null ? "episodes__img--unavailable" : ""
+                  showImage === null && ep.image == null
+                    ? "episodes__img--unavailable"
+                    : ""
                 }`}
               />
             </div>

@@ -23,4 +23,8 @@ const findSelectedShow = (data) => {
   return data.find((item) => item.id === Number(selectedShowObj.showId));
 };
 
-export { handleError, convertDate, findSelectedShow };
+const findSelectedEpisode = (setSelectedEp, data, id) => {
+  setSelectedEp(data.find((ep) => ep.id === id));
+};
+
+export { handleError, convertDate, findSelectedShow, findSelectedEpisode };

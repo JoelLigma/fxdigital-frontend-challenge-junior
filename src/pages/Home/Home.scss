@@ -1,4 +1,5 @@
 @use "../../styles/partials/globals/mixins" as *;
+@use "../../styles/partials/globals/variables" as *;
 
 .home {
   margin-top: 15.5rem;
@@ -10,12 +11,13 @@
   &__title {
     display: flex;
     flex-wrap: wrap;
-    font-size: 4rem;
     margin-bottom: 4rem;
     padding: 0 1.6rem;
     white-space: pre-wrap;
+    font-size: 3rem;
 
     @include tablet {
+      font-size: 4rem;
       padding: 0 3.6rem;
     }
 
@@ -28,16 +30,17 @@
     @include tablet {
       background-color: white;
       position: fixed;
-      top: 100px;
+      top: 22.7rem;
       left: 79%;
       width: 125%;
-      height: 1208px;
+      height: 120.8rem;
       z-index: -1;
-      transform: rotate(119deg);
+      transform: rotate(117deg);
     }
 
     @include desktop {
-      left: 24%;
+      left: 29%;
+      top: 16.6rem;
     }
   }
 
@@ -60,5 +63,55 @@
       margin: 0 calc((100vw - 1208px) / 2) 6rem;
       grid-template-columns: 1fr 1fr 1fr;
     }
+  }
+
+  &__not-found {
+    width: 100%;
+    padding: 3rem 0;
+    height: 26rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #070532;
+    margin-bottom: 5rem;
+    clip-path: polygon(0 0, 0 100%, 83.5% 100%, 100% 90.5%, 100% 0);
+    -webkit-clip-path: polygon(0 0, 0 100%, 83.5% 100%, 100% 90.5%, 100% 0);
+
+    @include tablet {
+      width: 50rem;
+    }
+  }
+
+  &__search {
+    width: 10rem;
+    height: 10rem;
+  }
+
+  &__error {
+    margin-top: 2rem;
+    padding: 0 2rem;
+    font-size: 1.8rem;
+    font-weight: 400;
+    color: $ice;
+  }
+}
+
+.error {
+  padding: 0 2rem;
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @include tablet {
+    align-items: unset;
+    padding: 0 3.6rem;
+  }
+
+  @include desktop {
+    padding: 0 0 0 calc((100vw - 1208px) / 2);
   }
 }

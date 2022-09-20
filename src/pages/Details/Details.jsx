@@ -4,23 +4,20 @@ import unavailable from "../../assets/icons/unavailable.svg";
 import element from "../../assets/icons/fx-element.svg";
 import Button from "../../components/Button/Button";
 import { API_ENDPOINT } from "../../api/api";
-import { handleError, findSelectedShow } from "../../utils/utils";
+import {
+  handleError,
+  findSelectedShow,
+  findSelectedEpisode,
+} from "../../utils/utils";
 import Episodes from "../../components/Episodes/Episodes";
 
 const Details = ({ data }) => {
+  console.log("Details", data);
+
   const [episodeData, setEpisodeData] = useState([]);
   const [selectedEp, setSelectedEp] = useState({});
 
   const selectedShow = findSelectedShow(data);
-  console.log("selected show", selectedShow);
-
-  const findSelectedEpisode = (data, id) => {
-    setSelectedEp(data.find((ep) => ep.id === id));
-    console.log(
-      "findSelectedEpisode",
-      data.find((ep) => ep.id === id)
-    );
-  };
 
   const getEpisodesData = (selectedShow) => {
     const showId = selectedShow._embedded.show.id;
@@ -31,8 +28,7 @@ const Details = ({ data }) => {
       .then((response) => response.json())
       .then((data) => {
         setEpisodeData(data);
-        console.log("setEpisodeData", data); // can be removed later
-        findSelectedEpisode(data, selectedShow.id);
+        findSelectedEpisode(setSelectedEp, data, selectedShow.id);
       })
       .catch((error) => console.error("GET episode data error:", error));
   };
@@ -44,7 +40,9 @@ const Details = ({ data }) => {
     getEpisodesData(selectedShow);
   }, []);
 
-  if (selectedShow === undefined || Object.keys(selectedEp).length === 0) {
+  if (selectedShow === undefined) {
+    return <h1 className="details__error">Loading...</h1>;
+  } else if (Object.keys(selectedEp).length === 0) {
     return (
       <h1 className="details__error">
         Sorry, we could not find the selected show.
@@ -60,7 +58,8 @@ const Details = ({ data }) => {
           <img className="details__elements" src={element} alt="FX elements" />
           <div
             className={`details__container-img ${
-              selectedEp.image === null
+              selectedEp.image === null &&
+              selectedShow._embedded.show.image === null
                 ? "details__container-img--unavailable"
                 : ""
             }`}
@@ -69,11 +68,16 @@ const Details = ({ data }) => {
               src={
                 selectedEp.image !== null
                   ? selectedEp.image.original
+                  : selectedShow._embedded.show.image !== null
+                  ? selectedShow._embedded.show.image.original
                   : unavailable
               }
               alt="Preview pciture"
               className={`details__img ${
-                selectedEp.image === null ? "details__img--unavailable" : ""
+                selectedEp.image === null &&
+                selectedShow._embedded.show.image === null
+                  ? "details__img--unavailable"
+                  : ""
               }`}
             />
           </div>
@@ -82,20 +86,19 @@ const Details = ({ data }) => {
           <p className="details__text details__text--large">{`Season ${selectedEp.season}, Episode ${selectedEp.number}: ${selectedEp.name}`}</p>
           <p className="details__text">{`${
             selectedEp.summary !== null && selectedEp.summary.length > 0
-              ? selectedEp.summary.replaceAll("<p>", "").replaceAll("</p>", "")
+              ? selectedEp.summary.replace(/<[^>]*>?/gm, "")
               : "N/A"
           }`}</p>
           <p className="details__text">
             <span className="details__text--bold">{"Avg. rating: "}</span>
             {`${
-              selectedShow._embedded.show.rating.average !== null //&&
-                ? //   String(selectedShow._embedded.show.rating.average).length > 0
-                  selectedShow._embedded.show.rating.average
+              selectedShow._embedded.show.rating.average !== null
+                ? selectedShow._embedded.show.rating.average
                 : "N/A"
             }`}
           </p>
           <p className="details__text">
-            <span className="details__text--bold">{"Genre(s): "}</span>
+            <span className="details__text--bold">{"Genre: "}</span>
             {`${
               selectedShow._embedded.show.genres !== null &&
               selectedShow._embedded.show.genres.length > 0
@@ -134,7 +137,13 @@ const Details = ({ data }) => {
       </div>
       <Episodes
         episodeData={episodeData}
-        findSelectedEpisode={findSelectedEpisode}
+        setSelectedEp={setSelectedEp}
+        selectedEp={selectedEp}
+        showImage={
+          selectedShow._embedded.show.image !== null
+            ? selectedShow._embedded.show.image.original
+            : null
+        }
       />
     </section>
   );

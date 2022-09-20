@@ -8,14 +8,6 @@
   font-size: 1.6rem;
   border-bottom: 1px solid hsla(0, 0%, 59%, 0.5);
 
-  // @include tablet {
-  //   padding: 21rem 3.6rem 14rem;
-  // }
-
-  // @include desktop {
-  //   padding: 21rem calc((100vw - 1208px) / 2) 14rem;
-  // }
-
   &__header {
     opacity: 0.5;
     margin-bottom: 2.3rem;
@@ -53,6 +45,7 @@
       font-size: 3rem;
       color: $brandPrimary;
       font-weight: 600;
+      line-height: 3rem;
     }
 
     &--bold {
@@ -78,6 +71,7 @@
     clip-path: polygon(0 0, 0 100%, 83.5% 100%, 100% 90.5%, 100% 0);
     -webkit-clip-path: polygon(0 0, 0 100%, 83.5% 100%, 100% 90.5%, 100% 0);
     position: relative;
+    width: 100%;
 
     &--unavailable {
       width: 100%;
@@ -105,6 +99,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: top;
 
     &--unavailable {
       width: 18rem;
@@ -145,5 +140,11 @@
       height: 56rem;
       width: 71rem;
     }
+  }
+
+  &__error {
+    font-size: 2rem;
+    font-weight: 400;
+    margin: 2rem;
   }
 }
