@@ -5,12 +5,12 @@ import element from "../../assets/icons/fx-element.svg";
 import Button from "../../components/Button/Button";
 import { API_ENDPOINT } from "../../api/api";
 import {
-  handleError,
   findSelectedShow,
   findSelectedEpisode,
   removeHTMLTags,
 } from "../../utils/utils";
 import Episodes from "../../components/Episodes/Episodes";
+import axios from "axios";
 
 const Details = ({ data }) => {
   const [episodeData, setEpisodeData] = useState([]);
@@ -18,18 +18,15 @@ const Details = ({ data }) => {
 
   const selectedShow = findSelectedShow(data);
 
-  const getEpisodesData = (selectedShow) => {
+  const getEpisodesData = async (selectedShow) => {
     const showId = selectedShow._embedded.show.id;
-    fetch(`${API_ENDPOINT}/shows/${showId}/episodes`, {
-      method: "GET",
-    })
-      .then(handleError)
-      .then((response) => response.json())
-      .then((data) => {
-        setEpisodeData(data);
-        findSelectedEpisode(setSelectedEp, data, selectedShow.id);
-      })
-      .catch((error) => console.error("GET episode data error:", error));
+    try {
+      const res = await axios.get(`${API_ENDPOINT}/shows/${showId}/episodes`);
+      setEpisodeData(res.data);
+      findSelectedEpisode(setSelectedEp, data, selectedShow.id);
+    } catch (error) {
+      console.error("GET episode data error:", error);
+    }
   };
 
   // jump to top of page

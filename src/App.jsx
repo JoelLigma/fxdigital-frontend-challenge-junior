@@ -6,7 +6,8 @@ import Footer from "./components/Footer/Footer";
 import Details from "./pages/Details/Details";
 import "./styles/partials/globals/_resets.scss";
 import { API_ENDPOINT } from "./api/api";
-import { convertDate, handleError } from "./utils/utils";
+import { convertDate } from "./utils/utils";
+import axios from "axios";
 
 /**
  * The starting page for your App
@@ -20,16 +21,15 @@ const App = () => {
 
   const [data, setData] = useState([]);
 
-  const getData = () => {
-    fetch(`${API_ENDPOINT}/schedule/web?date=${date}&country=GB`, {
-      method: "GET",
-    })
-      .then(handleError)
-      .then((response) => response.json())
-      .then((data) => {
-        setData(data);
-      })
-      .catch((error) => console.error("GET web tv data error:", error));
+  const getData = async () => {
+    try {
+      const res = await axios.get(
+        `${API_ENDPOINT}/schedule/web?date=${date}&country=GB`
+      );
+      setData(res.data);
+    } catch (error) {
+      console.error("GET web tv data error:", error);
+    }
   };
 
   useEffect(() => {

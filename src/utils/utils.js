@@ -1,12 +1,5 @@
 import { useParams } from "react-router-dom";
 
-const handleError = (response) => {
-  if (!response.ok) {
-    throw Error(response.statusText);
-  }
-  return response;
-};
-
 const convertDate = (date) => {
   const selectedDate = new Date(date);
   const options = {
@@ -45,10 +38,4 @@ const removeHTMLTags = (str) => {
   return processedString;
 };
 
-export {
-  handleError,
-  convertDate,
-  findSelectedShow,
-  findSelectedEpisode,
-  removeHTMLTags,
-};
+export { convertDate, findSelectedShow, findSelectedEpisode, removeHTMLTags };
