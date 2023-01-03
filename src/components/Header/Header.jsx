@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import logo from "../../assets/logos/fxdigitallogo.png";
+import logo from "../../assets/logos/OnTV.png";
 import "./Header.scss";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";

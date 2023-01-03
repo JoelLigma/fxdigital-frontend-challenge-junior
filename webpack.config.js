@@ -10,6 +10,8 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, "public", "index.html"),
+      filename: "./index.html",
+      favicon: "./public/ontvfavicon.svg",
     }),
   ],
   module: {
