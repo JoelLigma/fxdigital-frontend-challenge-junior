@@ -22,7 +22,7 @@ export const Header = ({ setDate, date }) => {
       <nav className="navbar">
         <img
           src={logo}
-          alt="logo"
+          alt="OnTV logo"
           className={`navbar__img ${scrolled ? "navbar__img--white" : ""}`}
         />
         <ul className="navbar__list">

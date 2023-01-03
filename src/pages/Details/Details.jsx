@@ -68,7 +68,7 @@ const Details = ({ data }) => {
                   ? selectedShow._embedded.show.image.original
                   : unavailable
               }
-              alt="Preview pciture"
+              alt="Preview picture"
               className={`details__img ${
                 selectedEp.image === null &&
                 selectedShow._embedded.show.image === null

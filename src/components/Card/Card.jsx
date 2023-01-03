@@ -14,7 +14,11 @@ const Card = ({ image, name, ep, summary, airtime, id }) => {
       >
         <img
           src={image !== null ? image.original : unavailable}
-          alt="No preview picture available"
+          alt={
+            image === null
+              ? "No preview picture available"
+              : "TV show preview picture"
+          }
           className={`card__img ${
             image === null ? "card__img--unavailable" : ""
           }`}
